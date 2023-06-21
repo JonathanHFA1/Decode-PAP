@@ -1,6 +1,9 @@
 const express = require('express');
-const { sign } = require('jsonwebtoken');
 const router = express.Router();
+const { signup } = require('../controllers/authController');
+
+
+
 
 
 //auth routes
