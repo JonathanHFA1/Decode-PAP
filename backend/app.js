@@ -35,7 +35,7 @@ app.use(bodyparser.urlencoded({
 app.use(cookieParser());
 app.use(cors());
 
-//router middleware
+//routes middleware
 app.use('/api',authRoutes);
 
 //error middleware
