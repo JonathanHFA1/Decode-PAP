@@ -52,8 +52,6 @@
       "last 1 safari version"
     ]
   },
-  "//": "proxy age como intermediário e redireciona a solicitação para o servidor especificado",
-  "proxy": "http://localhost:9000",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
   }
