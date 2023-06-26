@@ -1,0 +1,9 @@
+controllers - responsaveis pelo controle de fluxo e lógica de negócios em uma aplicação.
+middleware -  refere-se a uma camada intermediária entre o cliente e o servidor, 
+models - armazenar arquivos relacionados a modelos de dados ou classes 
+routes -  rotas da aplicação 
+utils - funções utilitárias e pequenos trechos de código 
+
+
+
+
