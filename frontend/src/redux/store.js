@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
-import { userReducerSignUp } from './reducers/userReducer';
+import { userReducerProfile, userReducerSignIn, userReducerSignUp } from './reducers/userReducer';
 // import { userReducerLogout, userReducerProfile, userReducerSignIn, userReducerSignUp } from './reducers/userReducer';
 
 //combinar reducers
 const reducer = combineReducers({
-    signUp:userReducerSignUp
+    signUp:userReducerSignUp,
+    signIn:userReducerSignIn,
+    userProfile:userReducerProfile
 });
 
 //state inicial

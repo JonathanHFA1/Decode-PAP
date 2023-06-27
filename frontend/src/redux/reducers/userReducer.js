@@ -1,5 +1,17 @@
-import { USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_RESET, USER_SIGNIN_SUCCESS, USER_SIGNUP_FAIL, USER_SIGNUP_REQUEST, USER_SIGNUP_RESET, USER_SIGNUP_SUCCESS } from '../constants/userConstante';
-
+import {
+  USER_LOAD_FAIL,
+  USER_LOAD_REQUEST,
+  USER_LOAD_RESET,
+  USER_LOAD_SUCCESS,
+  USER_SIGNIN_FAIL,
+  USER_SIGNIN_REQUEST,
+  USER_SIGNIN_RESET,
+  USER_SIGNIN_SUCCESS,
+  USER_SIGNUP_FAIL,
+  USER_SIGNUP_REQUEST,
+  USER_SIGNUP_RESET,
+  USER_SIGNUP_SUCCESS,
+} from '../constants/userConstant';
 
 //Sign Up/registar
 export const userReducerSignUp = (state = {}, action) => {
@@ -9,7 +21,7 @@ export const userReducerSignUp = (state = {}, action) => {
     case USER_SIGNUP_SUCCESS:
       return {
         loading: false,
-        usersSignUp: action.payload,
+        userSignUp: action.payload,
       };
     case USER_SIGNUP_FAIL:
       return {
@@ -23,26 +35,52 @@ export const userReducerSignUp = (state = {}, action) => {
       return state;
   }
 };
+
 //sign In/entrar
 export const userReducerSignIn = (state = {}, action) => {
-    switch (action.type) {
-      case USER_SIGNIN_REQUEST:
-        return { loading: true };
-      case  USER_SIGNIN_SUCCESS:
-        return {
-          loading: false,
-          USER_SINGINsSignUp: action.payload,
-        };
-      case USER_SIGNIN_FAIL:
-        return {
-          loading: false,
-          error: action.payload,
-        };
-      case  USER_SIGNIN_RESET:
-        return {};
-  
+  switch (action.type) {
+    case USER_SIGNIN_REQUEST:
+      return {
+        loading: true,
+        userInfo: null,
+        isAuthenticated: false,
+      };
+    case USER_SIGNIN_SUCCESS:
+      return {
+        loading: false,
+        userInfo: action.payload,
+        isAuthenticated: true,
+      };
+    case USER_SIGNIN_FAIL:
+      return {
+        loading: false,
+        userInfo: null,
+        isAuthenticated: false,
+        error: action.payload,
+      };
+    case USER_SIGNIN_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+//perfil usuario
+export const userReducerProfile = (state = { user: null }, action) => {
+  switch (action.type) {
+      case USER_LOAD_REQUEST:
+          return { loading: true, user: null }
+      case USER_LOAD_SUCCESS:
+          return {
+              loading: false,
+              user: action.payload.user,
+          }
+      case USER_LOAD_FAIL:
+          return { loading: false, user: null, error: action.payload }
+      case USER_LOAD_RESET:
+          return {}
       default:
-        return state;
-    }
-  };
-  
+          return state;
+  }
+
+}
