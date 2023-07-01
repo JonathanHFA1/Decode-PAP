@@ -10,14 +10,19 @@ import store from './redux/store';
 import Login from './pages/Login'
 import AdminDashboard from './admin/AdminDashboard';
 import CreateBook from './admin/CreateBook';
-import EditBook from './admin/EditBook';
 import AdminRoute from './components/AdminRoute';
+import UserRoute from './components/UserRouter';
 import Layout from './admin/global/Layout';
+import EditPost from './admin/EditBook';
+import UserDashboard from './user/UserDashboard';
 
 
 //HOC
 const AdminDashboarHOC = Layout(AdminDashboard);
 const CreateBookHOC = Layout(CreateBook);
+const EditPostHOC = Layout(EditPost);
+const UserDashboardHOC = Layout(UserDashboard);
+
 
 
 const App = () => {
@@ -32,8 +37,8 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboarHOC /></AdminRoute>} />
               <Route path="/admin/book/create" element={<AdminRoute><CreateBookHOC /></AdminRoute>} />
-              <Route path="/admin/book/edit/:id" element={<AdminRoute><EditBook /></AdminRoute>} />
-
+              <Route path="/admin/book/edit/:id" element={<AdminRoute><EditPostHOC /></AdminRoute>} />
+              <Route path="/user/dashboard" element={<UserRoute><UserDashboardHOC /></UserRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

@@ -12,7 +12,7 @@ router.post('/signin', signin);
 // /api/logout
 router.post('/logout', logout);
 // /api/me
-router.post('/me',isAuthenticated, userProfile);
+router.post('/api/me',isAuthenticated, userProfile);
 
 
 module.exports = router;

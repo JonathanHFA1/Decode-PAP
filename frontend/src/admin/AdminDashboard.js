@@ -52,19 +52,19 @@ const AdminDashboard = () => {
 
         {
             field: '_id',
-            headerName: 'ID Livro',
+            headerName: 'Post ID',
             width: 150,
             editable: true,
         },
         {
             field: 'title',
-            headerName: 'Titulo Livro',
+            headerName: 'Post title',
             width: 150,
         },
 
         {
             field: 'image',
-            headerName: 'Imagem',
+            headerName: 'Image',
             width: 150,
             renderCell: (params) => (
                 <img width="40%" src={params.row.image.url} />
@@ -102,23 +102,23 @@ const AdminDashboard = () => {
             )
         },
 
-        // {
-        //     field: "Actions",
-        //     width: 100,
-        //     renderCell: (value) => (
-        //         <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
-        //             <Link to={`/admin/post/edit/${value.row._id}`}>
-        //                 <IconButton aria-label="edit" >
-        //                     <EditIcon sx={{ color: '#1976d2' }} />
-        //                 </IconButton>
-        //             </Link>
-        //             <IconButton aria-label="delete" onClick={(e) => deletePostById(e, value.row._id)} >
-        //                 <DeleteIcon sx={{ color: 'red' }} />
-        //             </IconButton>
+        {
+            field: "Actions",
+            width: 100,
+            renderCell: (value) => (
+                <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
+                    <Link to={`/admin/book/edit/${value.row._id}`}>
+                        <IconButton aria-label="edit" >
+                            <EditIcon sx={{ color: '#1976d2' }} />
+                        </IconButton>
+                    </Link>
+                    <IconButton aria-label="delete" onClick={(e) => deletePostById(e, value.row._id)} >
+                        <DeleteIcon sx={{ color: 'red' }} />
+                    </IconButton>
 
-        //         </Box>
-        //     )
-        // }
+                </Box>
+            )
+        }
     ];
 
 
@@ -126,12 +126,13 @@ const AdminDashboard = () => {
         <Box >
 
             <Typography variant="h4" sx={{ color: "black", pb: 3 }}>
-                Livros
+                Posts
             </Typography>
             <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
-                <Button variant='contained' color="success" startIcon={<AddIcon />}><Link style={{ color: 'white', textDecoration: 'none' }} to='/admin/post/create'>Criar Livro</Link> </Button>
+                <Button variant='contained' color="success" startIcon={<AddIcon />}><Link style={{ color: 'white', textDecoration: 'none' }} to='/admin/post/create'>Create Post</Link> </Button>
             </Box>
             <Paper sx={{ bgcolor: "white" }} >
+
                 <Box sx={{ height: 400, width: '100%' }}>
                     <DataGrid
                         getRowId={(row) => row._id}
@@ -154,6 +155,7 @@ const AdminDashboard = () => {
                     />
                 </Box>
             </Paper>
+
         </Box>
     )
 }

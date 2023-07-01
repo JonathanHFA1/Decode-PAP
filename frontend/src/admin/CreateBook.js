@@ -51,7 +51,7 @@ const CreatePost = () => {
       <Box sx={{ bgcolor: 'white', padding: '20px 200px' }}>
         <Typography variant="h5" sx={{ pb: 4 }}>
           {' '}
-          Create post{' '}
+          Criar Livro{' '}
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
