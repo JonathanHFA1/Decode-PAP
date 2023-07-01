@@ -9,9 +9,16 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { modules } from '../components/moduleToolbar';
 
+
+//código define um esquema de validação usando Yup para validar o título e o conteúdo 
 const validationSchema = yup.object({
-  title: yup.string('Add a post title').min(4, 'text content should havea minimum of 4 characters ').required('Post title is required'),
-  content: yup.string('Add text content').min(10, 'text content should havea minimum of 10 characters ').required('text content is required'),
+  title: yup.string('Adicione o titulo')
+    .min(4, 'o conteúdo do texto deve ter no mínimo 4 caracteres')
+    .required('Titulo do livro é obrigatório'),
+  
+  content: yup.string('Adicionar conteúdo de texto')
+    .min(10, 'O conteúdo do texto deve ter no mínimo 10 caracteres')
+    .required('O conteúdo do texto é obrigatório'),
 });
 
 const CreatePost = () => {
@@ -29,11 +36,10 @@ const CreatePost = () => {
       actions.resetForm();
     },
   });
-
   const createNewPost = async (values) => {
     try {
       const { data } = await axios.post('/api/post/create', values);
-      toast.success('post created');
+      toast.success('Livro Criado');
     } catch (error) {
       console.log(error);
       toast.error(error);
@@ -95,14 +101,14 @@ const CreatePost = () => {
                       <p style={{ textAlign: 'center' }}>
                         <CloudUploadIcon sx={{ color: 'primary.main', mr: 2 }} />
                       </p>
-                      <p style={{ textAlign: 'center', fontSize: '12px' }}> Drop here!</p>
+                      <p style={{ textAlign: 'center', fontSize: '12px' }}> Imagem aqui!</p>
                     </>
                   ) : values.image === null ? (
                     <>
                       <p style={{ textAlign: 'center' }}>
                         <CloudUploadIcon sx={{ color: 'primary.main', mr: 2 }} />
                       </p>
-                      <p style={{ textAlign: 'center', fontSize: '12px' }}>Drag and Drop here or click to choose</p>
+                      <p style={{ textAlign: 'center', fontSize: '12px' }}>Arraste e solte aqui ou clique para escolher!</p>
                     </>
                   ) : (
                     <>
@@ -125,7 +131,7 @@ const CreatePost = () => {
             sx={{ mt: 3, p: 1, mb: 2, borderRadius: '25px' }}
             // disabled={loading}
           >
-            Create post
+            Criar Livro
           </Button>
         </Box>
       </Box>

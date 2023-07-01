@@ -17,6 +17,7 @@ import Layout from './admin/global/Layout';
 
 //HOC
 const AdminDashboarHOC = Layout(AdminDashboard);
+const CreateBookHOC = Layout(CreateBook);
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboarHOC /></AdminRoute>} />
-              <Route path="/admin/book/create" element={<AdminRoute><CreateBook /></AdminRoute>} />
+              <Route path="/admin/book/create" element={<AdminRoute><CreateBookHOC /></AdminRoute>} />
               <Route path="/admin/book/edit/:id" element={<AdminRoute><EditBook /></AdminRoute>} />
 
               <Route path="*" element={<NotFound />} />
