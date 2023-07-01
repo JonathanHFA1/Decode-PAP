@@ -30,8 +30,17 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard() {
-  const [expanded, setExpanded] = React.useState(false);
+const  PostCard  = ({
+  id,
+  title,
+  subheader,
+  image,
+  content,
+  comments,
+  likes,
+  showPosts,
+  likesId
+}) => {  const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -95,3 +104,4 @@ export default function RecipeReviewCard() {
     </Card>
   );
 }
+export default PostCard;
