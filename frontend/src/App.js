@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import Login from './pages/Login'
+import Login from './pages/Login';
 import AdminDashboard from './admin/AdminDashboard';
 import CreateBook from './admin/CreateBook';
 import AdminRoute from './components/AdminRoute';
@@ -16,16 +16,14 @@ import Layout from './admin/global/Layout';
 import EditPost from './admin/EditBook';
 import UserDashboard from './user/UserDashboard';
 import Register from './pages/Register';
-import SingleBook from './pages/SingleBook'
-
+import SingleBook from './pages/SingleBook';
+import BookApi from './BookApi';
 
 //HOC
 const AdminDashboarHOC = Layout(AdminDashboard);
 const CreateBookHOC = Layout(CreateBook);
 const EditPostHOC = Layout(EditPost);
 const UserDashboardHOC = Layout(UserDashboard);
-
-
 
 const App = () => {
   return (
@@ -37,12 +35,41 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/livros" element={<BookApi />} />
               <Route path="/register" element={<Register />} />
               <Route path="/post/:id" element={<SingleBook />} />
-              <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboarHOC /></AdminRoute>} />
-              <Route path="/admin/book/create" element={<AdminRoute><CreateBookHOC /></AdminRoute>} />
-              <Route path="/admin/book/edit/:id" element={<AdminRoute><EditPostHOC /></AdminRoute>} />
-              <Route path="/user/dashboard" element={<UserRoute><UserDashboardHOC /></UserRoute>} />
+              <Route
+                path="/admin/dashboard"
+                element={
+                  <AdminRoute>
+                    <AdminDashboarHOC />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/book/create"
+                element={
+                  <AdminRoute>
+                    <CreateBookHOC />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/book/edit/:id"
+                element={
+                  <AdminRoute>
+                    <EditPostHOC />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/user/dashboard"
+                element={
+                  <UserRoute>
+                    <UserDashboardHOC />
+                  </UserRoute>
+                }
+              />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
