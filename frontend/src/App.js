@@ -18,6 +18,8 @@ import UserDashboard from './user/UserDashboard';
 import Register from './pages/Register';
 import SingleBook from './pages/SingleBook';
 import BookApi from './BookApi';
+import Chat from './components/Chat';
+
 
 //HOC
 const AdminDashboarHOC = Layout(AdminDashboard);
@@ -69,6 +71,7 @@ const App = () => {
                     <UserDashboardHOC />
                   </UserRoute>
                 }
+                
               />
               <Route path="*" element={<NotFound />} />
             </Routes>
