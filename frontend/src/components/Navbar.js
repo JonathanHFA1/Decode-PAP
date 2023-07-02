@@ -175,7 +175,7 @@ const Navbar = () => {
                         <Typography
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
-                            <Link to="/" style={{ color: 'white', textDecoration: "none" }}>
+                            <Link to="/AboutUs" style={{ color: 'white', textDecoration: "none" }}>
                                 About Us
                             </Link>
                         </Typography>
