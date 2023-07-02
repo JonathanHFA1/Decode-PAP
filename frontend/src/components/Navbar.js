@@ -149,9 +149,34 @@ const Navbar = () => {
 
                         <Typography
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}>
+                            sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
                             <Link to="/register" style={{ color: 'white', textDecoration: "none" }}>
                                 Register
+                            </Link>
+                        </Typography>
+
+                        <Typography
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
+                            <Link to="../UserChat" style={{ color: 'white', textDecoration: "none" }}>
+                                Chat
+                            </Link>
+                        </Typography>
+
+                        <Typography
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
+                            <Link to="/" style={{ color: 'white', textDecoration: "none" }}>
+                                Livros
+                            </Link>
+                        </Typography>
+
+
+                        <Typography
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
+                            <Link to="/" style={{ color: 'white', textDecoration: "none" }}>
+                                About Us
                             </Link>
                         </Typography>
 

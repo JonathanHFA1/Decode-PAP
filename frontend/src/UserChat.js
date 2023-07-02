@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavbarChat';
 import Chat from './components/Chat';
 import { auth } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -8,8 +8,7 @@ const style = {
   appContainer: `max-w-[728px] mx-auto text-center`,
   sectionContainer: `flex flex-col h-[90vh] bg-gray-100 mt-10 shadow-xl border relative`,
 };
-
-function Chat() {
+ function UserChat() {
   const [user] = useAuthState(auth);
   //  console.log(user)
   return (
@@ -23,4 +22,5 @@ function Chat() {
   );
 }
 
-export default Chat;
+
+export default UserChat;
