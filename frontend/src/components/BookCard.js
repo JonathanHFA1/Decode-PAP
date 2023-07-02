@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,39 +10,46 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CommentIcon from '@mui/icons-material/Comment';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import image from '../images/livro1.jpg';
+import { Box } from '@mui/system';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
+import Loader from './Loader';
 
+const PostCard = ({ id, title, subheader, image, content, comments, likes, showPosts, likesId }) => {
+  const { userInfo } = useSelector((state) => state.signIn);
+  const [loading, setLoading] = useState(false);
 
-
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
-
-const  PostCard  = ({
-  id,
-  title,
-  subheader,
-  image,
-  content,
-  comments,
-  likes,
-  showPosts,
-  likesId
-}) => {  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  //add like
+  const addLike = async () => {
+    try {
+      const { data } = await axios.put(`/api/addlike/post/${id}`);
+      // console.log("likes", data.post);
+      // if (data.success == true) {
+      //     showPosts();
+      // }
+    } catch (error) {
+      console.log(error.response.data.error);
+      toast.error(error.response.data.error);
+    }
+  };
+  //remove like
+  const removeLike = async () => {
+    try {
+      const { data } = await axios.put(`/api/removelike/post/${id}`);
+      // console.log("remove likes", data.post);
+      // if (data.success == true) {
+      //     showPosts();
+      // }
+    } catch (error) {
+      console.log(error.response.data.error);
+      toast.error(error.response.data.error);
+    }
   };
 
   return (
@@ -59,31 +65,41 @@ const  PostCard  = ({
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={title}
+        subheader={subheader}
       />
-      <Link to={''}>
-        <CardMedia
-         component="img" 
-         height="194"
-          image={image} 
-          alt="Paella dish" />
+      <Link to={`/post/${id}}`}>
+        <CardMedia component="img" height="194" image={image} alt="Paella dish" />
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          <Box component="span" dangerouslySetInnerHTML={{ __html: content.split(' ').slice(0, 10).join(' ') + '...' }}></Box>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-      
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
-          <ExpandMoreIcon />
-        </ExpandMore>
+        <div className="flex gap-[6rem]">
+          <Box>
+            { loading ? <Loader/>:
+            likesId.includes(userInfo && userInfo.id) ? (
+              <IconButton onClick={removeLike} aria-label="add to favorites">
+                <FavoriteIcon sx={{ color: 'red' }} />
+              </IconButton>
+            ) : (
+              <IconButton onClick={addLike} aria-label="add to favorites">
+                <FavoriteBorderIcon sx={{ color: 'red' }} />
+              </IconButton>
+            )}
+            {likes} Like(s)
+          </Box>
+          <Box>
+            {comments}
+            <IconButton aria-label="comment">
+              <CommentIcon />
+            </IconButton>
+          </Box>
+        </div>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.</Typography>
@@ -100,8 +116,7 @@ const  PostCard  = ({
           <Typography>Set aside off of the heat to let rest for 10 minutes, and then serve.</Typography>
         </CardContent>
       </Collapse>
-      
     </Card>
   );
-}
+};
 export default PostCard;

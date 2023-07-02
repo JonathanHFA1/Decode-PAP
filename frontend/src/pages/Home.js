@@ -5,13 +5,13 @@ import { Box } from '@mui/system';
 import { Container, Grid } from '@mui/material';
 import BookCard from '../components/BookCard';
 import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import moment from 'moment';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [postAddLike, setPostAddLike] = useState([]);
-  const [postRemoveLike, setPostRemoveLike] = useState([]);
+
 
   //display books
   const showPosts = async () => {
@@ -38,15 +38,25 @@ const Home = () => {
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 0, md: 12 }}>
               {posts &&
                 posts.map((post, index) => (
-                  <Grid item xs={2} sm={4} md={4}>
-                    <BookCard key={index} />
+                  <Grid item xs={2} sm={4} md={4} key={index}>
+                    <BookCard
+                      id={post._id}
+                      title={post.title}
+                      content={post.content}
+                      image={post.image ? post.image.url : ''}
+                      subheader={moment(post.createdAt).format('MMMM DD, YYYY')}
+                      comments={post.comments.length}
+                      likes={post.likes.length}
+                      likesId={post.likes}
+                      showPosts={showPosts}
+                    />
                   </Grid>
                 ))}
             </Grid>
           </Box>
         </Container>
         <Footer />
-       </Box>
+      </Box>
     </>
   );
 };

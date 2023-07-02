@@ -15,6 +15,8 @@ import UserRoute from './components/UserRouter';
 import Layout from './admin/global/Layout';
 import EditPost from './admin/EditBook';
 import UserDashboard from './user/UserDashboard';
+import Register from './pages/Register';
+import SingleBook from './pages/SingleBook'
 
 
 //HOC
@@ -35,6 +37,8 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/post/:id" element={<SingleBook />} />
               <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboarHOC /></AdminRoute>} />
               <Route path="/admin/book/create" element={<AdminRoute><CreateBookHOC /></AdminRoute>} />
               <Route path="/admin/book/edit/:id" element={<AdminRoute><EditPostHOC /></AdminRoute>} />

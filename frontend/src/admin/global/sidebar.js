@@ -65,12 +65,20 @@ const SidebarAdm = () => {
                     {' '}
                     Create post{' '}
                   </MenuItem>
+                    <MenuItem component={<Link to="/" />} icon={<DashboardIcon />}>
+                    {' '}
+                    Menu{' '}
+                  </MenuItem>
                 </>
               ) : (
                 <>
                   <MenuItem component={<Link to="/user/dashboard" />} icon={<DashboardIcon />}>
                     {' '}
                     Dashboard{' '}
+                  </MenuItem>
+                  <MenuItem component={<Link to="/" />} icon={<DashboardIcon />}>
+                    {' '}
+                    Menu{' '}
                   </MenuItem>
                 </>
               )}
