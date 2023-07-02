@@ -1,10 +1,13 @@
 /*import Image from "next/image";
 import Navbar from "~/components/navbar";
 import frontImage from "../../public/manifest.json";*/
+import Navbar from '../components/Navbar';
+
 
 const AboutUs = () => {
   return (
     <>
+     <Navbar />
       <div className="flex h-[50%] items-center justify-center lg:h-screen mt-5 sm:mt-0 ">
         <div className="mt-16 sm:mt-0 flex h-[80%] w-full flex-col items-center justify-center lg:flex-row gap-6 sm:gap-0">
           <div className="mt-10  w-full lg:p-20 md:w-[50%] p-3 sm:p-0">

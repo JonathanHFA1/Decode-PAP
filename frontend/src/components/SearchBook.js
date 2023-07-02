@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BookList from './BookList';
+import Navbar from './Navbar';
 
 const SearchBook = () => {
   const [books, setbooks] = useState([]);
@@ -19,16 +20,16 @@ const SearchBook = () => {
   };
   return (
     <>
+    <Navbar/>
       <div className="h-[200px] w-full flex justify-center items-center">
-        <input
-        className='bg-[#3d3d3d] border-none outline-none p-2 text-white'
+        <input className='bg-[#3d3d3d] border-none outline-none p-2 text-white rounded-xl'
           type="text"
           value={input}
           onChange={(e) => {
             setInput(e.target.value);
-          }}
-        />
+          }}></input>
       </div>
+      
       <BookList books={books} />
     </>
   );

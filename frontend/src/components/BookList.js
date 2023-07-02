@@ -8,11 +8,11 @@ const BookList = ({ books }) => {
           <div className="book-container">
           {book.volumeInfo.imageLinks && (
             <div>
-              <img key={book.id} className="w-[300px] object-cover h-full cursor-pointer" src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
-              {/* <div className=' absolute bg-[#01010180] bottom-0 left-0 right-0 text-white p-4 '>
+              <img key={book.id} className="w-[370px] object-cover h-full cursor-pointer" src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
+              {<div className=''>
                 {book.volumeInfo.title}
                 <p>By:{book.volumeInfo.authors}</p>
-              </div> */}
+              </div> }
               
             </div>
 

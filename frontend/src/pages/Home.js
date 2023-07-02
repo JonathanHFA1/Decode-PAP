@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <>
-      <Box sx={{ bgcolor: '#fafafa', minHeight: '100vh' }}>
+      <Box sx={{ bgcolor: '#252525', minHeight: '100vh' }}>
         <Navbar />
         <Container sx={{ pt: 5, pb: 5, minHeight: '83vh' }}>
           <Box sx={{ flexGrow: 1 }}>
