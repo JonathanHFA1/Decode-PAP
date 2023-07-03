@@ -117,7 +117,7 @@ const CreatePost = () => {
                           <img style={{ maxWidth: '100px' }} src={values.image} alt="" />
                         </Box>
                       </Box>
-                    </>
+                    </>   
                   )}
                 </Box>
               )}

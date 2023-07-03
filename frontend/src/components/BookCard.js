@@ -21,6 +21,9 @@ import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Loader from './Loader';
 
+
+
+
 const PostCard = ({ id, title, subheader, image, content, comments, likes, showPosts, likesId }) => {
   const { userInfo } = useSelector((state) => state.signIn);
   const [loading, setLoading] = useState(false);
@@ -55,21 +58,13 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+     
+        
         title={title}
-        subheader={subheader}
+        // subheader={subheader}
       />
       <Link to={`/post/${id}}`}>
-        <CardMedia component="img" height="194" image={image} alt="Capa Livro" />
+        <CardMedia className='h-[300px]' component="img" height="194"  image={image} alt="Capa Livro" />
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -93,9 +88,7 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
           </Box>
         </div>
       </CardActions>
-      <Collapse timeout="auto" unmountOnExit>
-      
-      </Collapse>
+     
     </Card>
   );
 };

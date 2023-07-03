@@ -21,6 +21,7 @@ import BookApi from './BookApi';
 import Chat from './components/Chat';
 import UserChat from './UserChat';
 import AboutUs from './pages/AboutUs';
+import Livros from './pages/Livros';
 
 
 //HOC
@@ -39,6 +40,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/livrosloja" element={<Livros />} />
               <Route path="/livros" element={<BookApi />} />
               <Route path="/register" element={<Register />} />
               <Route path="/post/:id" element={<SingleBook />} />
