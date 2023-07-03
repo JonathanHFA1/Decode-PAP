@@ -21,9 +21,6 @@ import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Loader from './Loader';
 
-
-
-
 const PostCard = ({ id, title, subheader, image, content, comments, likes, showPosts, likesId }) => {
   const { userInfo } = useSelector((state) => state.signIn);
   const [loading, setLoading] = useState(false);
@@ -54,28 +51,27 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
       toast.error(error.response.data.error);
     }
   };
-
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-     
-        
         title={title}
         // subheader={subheader}
       />
       <Link to={`/post/${id}}`}>
-        <CardMedia className='h-[300px]' component="img" height="194"  image={image} alt="Capa Livro" />
+        <CardMedia className="h-[300px]" component="img" height="194" image={image} alt="Capa Livro" />
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
+          <p className="text-black">Descrição livro</p>
           <Box component="span" dangerouslySetInnerHTML={{ __html: content.split(' ').slice(0, 10).join(' ') + '...' }}></Box>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <div className="flex gap-[6rem]">
           <Box>
-            { loading ? <Loader/>:
-            likesId.includes(userInfo && userInfo.id) ? (
+            {loading ? (
+              <Loader />
+            ) : likesId.includes(userInfo && userInfo.id) ? (
               <IconButton onClick={removeLike} aria-label="add to favorites">
                 <FavoriteIcon sx={{ color: 'red' }} />
               </IconButton>
@@ -88,7 +84,6 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
           </Box>
         </div>
       </CardActions>
-     
     </Card>
   );
 };

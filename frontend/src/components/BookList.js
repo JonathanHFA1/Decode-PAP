@@ -2,7 +2,7 @@ import React from 'react';
 
 const BookList = ({ books }) => {
   return (
-    <div className="flex flex-wrap flex-row  items-center justify-center gap-2 p-20">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-2 p-20">
       
       {books.map((book) => (
         

@@ -7,6 +7,7 @@ function Modal({show, item}) {
     }
     let thumbnail=item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
   return (
+    <>
     <div className=''>
         <div className=''>
             <button className=''>x</button>
@@ -22,6 +23,8 @@ function Modal({show, item}) {
             <h4 className=''>{item.volumeInfo.description}</h4>
         </div>
     </div>
+    </>
+    
   )
 }
 

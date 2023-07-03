@@ -3,7 +3,7 @@ import {auth} from '../firebase'
 import '../index.css'
 
 const style = {
-    button: `  text-white bg-orange-600 px-5 hover:bg-orange-700 rounded-md`
+    button: `  text-white bg-orange-700 px-5 hover:bg-orange-600 rounded-md py-4`
 }
 
 const LogOut = () => {

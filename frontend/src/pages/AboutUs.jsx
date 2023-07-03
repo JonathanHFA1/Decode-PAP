@@ -1,6 +1,4 @@
-/*import Image from "next/image";
-import Navbar from "~/components/navbar";
-import frontImage from "../../public/manifest.json";*/
+import frontImage from "../images/rBook.png";
 import Navbar from '../components/Navbar';
 
 
@@ -38,6 +36,7 @@ const AboutUs = () => {
             </p>{" "}
           </div>
           <div className="flex w-[100%] justify-center sm:w-[50%] ">
+            <img src={frontImage} alt="" />
           </div>
         </div>
       </div>

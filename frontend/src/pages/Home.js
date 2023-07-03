@@ -70,7 +70,7 @@ const Home = () => {
             <div className="flex flex-col items-center justify-center lg:flex-row">
               {/* Container 1 */}
               <div className="flex flex-row">
-                <Box sx={{  minHeight: '100vh' }}>
+                <Box sx={{  minHeight: '50vh' }}>
                   <Container sx={{ pt: 5, pb: 5, minHeight: '83vh' }}>
                     <Box sx={{ flexGrow: 1 }}>
                       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 0, md: 12 }}>
