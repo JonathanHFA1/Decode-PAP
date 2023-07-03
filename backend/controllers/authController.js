@@ -1,6 +1,5 @@
 const User = require('../models/userModel');
 const ErrorResponse = require('../utils/errorResponse');
-const ErroResponse = require('../utils/errorResponse');
 
 exports.signup = async (req, res, next) => {
   const { email } = req.body;
@@ -18,33 +17,33 @@ exports.signup = async (req, res, next) => {
     next(error);
   }
 };
-exports.signin = async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    //validation
-    if (!email) {
-      return next(new ErrorResponse('Por favor adicione o email', 403));
-    }
-    if (!password) {
-      return next(new ErrorResponse('Por favor adicione a senha', 403));
-    }
+  exports.signin = async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+      //validation
+      if (!email) {
+        return next(new ErrorResponse('Por favor adicione o email', 403));
+      }
+      if (!password) {
+        return next(new ErrorResponse('Por favor adicione a senha', 403));
+      }
 
-    //check email do usuario
-    const user = await User.findOne({ email });
-    if (!user) {
-      return next(new ErrorResponse('Credenciais invalidas', 400));
+      //check email do usuario
+      const user = await User.findOne({ email });
+      if (!user) {
+        return next(new ErrorResponse('Credenciais invalidas', 400));
+      }
+      //check senha do usuario(vai buscar o models UserModel)
+      const isMatched = await user.comparePassword(password);
+      if (!isMatched) {
+        return next(new ErrorResponse('Credenciais invalidas', 400));
+      }
+      //enviar o token
+      sendTokenResponse(user, 200, res);
+    } catch (error) {
+      next(error);
     }
-    //check senha do usuario(vai buscar o models UserModel)
-    const isMatched = await user.comparePassword(password);
-    if (!isMatched) {
-      return next(new ErrorResponse('Credenciais invalidas', 400));
-    }
-    //enviar o token
-    sendTokenResponse(user, 200, res);
-  } catch (error) {
-    next(error);
-  }
-};
+  };
 
 const sendTokenResponse = async (user, codeStatus, res) => {
   const token = await user.getJwtToken();
