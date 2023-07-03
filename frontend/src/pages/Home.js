@@ -39,7 +39,7 @@ const Home = () => {
           {/* Container Left */}
           <div className="flex-col items-start justify-center m-3 lg:flex">
             <h1 className="mb-10 text-[60px]">Bem-vindo à nossa biblioteca online</h1>
-            <p className=" mb-10 block text-[20px]">Descruba os romances, histórias míticas, biografias e muito mais na nossa biblioteca. Requisite o seu próximo livro de uma forma fácil e em poucos passos</p>
+            <p className=" mb-10 block text-white text-[20px]">Descruba os romances, histórias míticas, biografias e muito mais na nossa biblioteca. Requisite o seu próximo livro de uma forma fácil e em poucos passos</p>
             <div className="flex">
               <button className="visible w-full ">
                 <a href="/livros">
