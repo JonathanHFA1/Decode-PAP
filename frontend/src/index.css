@@ -29,11 +29,13 @@ body::-webkit-scrollbar{
 }
 p{
   color: #fff;
-  font-size: 18px;
-  line-height: 40px;
 }
 
 h1{
   color: #fff;
   font-size: 40px;
+}
+
+.textField__label {
+    color: #fff !important
 }

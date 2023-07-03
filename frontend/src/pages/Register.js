@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { userSignUpAction } from '../redux/actions/userAction'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import '../index.css';
 
 const validationSchema = yup.object({
     name: yup
@@ -50,16 +51,16 @@ const Register = () => {
             <Box sx={{ height: '81vh', display: "flex", alignItems: "center", justifyContent: "center", bgcolor: "primary.white" }}>
 
 
-                <Box onSubmit={formik.handleSubmit} component="form" className='form_style border-style' >
+                <Box onSubmit={formik.handleSubmit} component="form" className='form_style border-style ' >
                     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
                         <Avatar sx={{ m: 1, bgcolor: "primary.main", mb: 3 }}>
                             <LockOpenIcon />
                         </Avatar>
-                        <TextField
+                        <TextField className='textField'
                             sx={{
                                 mb: 3,
                                 "& .MuiInputBase-root": {
-                                    color: 'text.secondary',
+                                    color: '#fff',
                                 },
                                 fieldset: { borderColor: "rgb(231, 235, 240)" }
                             }}
@@ -82,7 +83,7 @@ const Register = () => {
                             sx={{
                                 mb: 3,
                                 "& .MuiInputBase-root": {
-                                    color: 'text.secondary',
+                                    color: '#ffff',
                                 },
                                 fieldset: { borderColor: "rgb(231, 235, 240)" }
                             }}
@@ -105,7 +106,7 @@ const Register = () => {
                             sx={{
                                 mb: 3,
                                 "& .MuiInputBase-root": {
-                                    color: 'text.secondary'
+                                    color: '#fff'
                                 },
                                 fieldset: { borderColor: "rgb(231, 235, 240)" }
                             }}

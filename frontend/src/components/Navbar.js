@@ -151,7 +151,7 @@ const Navbar = () => {
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
                             <Link to="/register" style={{ color: 'white', textDecoration: "none" }}>
-                                Register
+                                Sing In
                             </Link>
                         </Typography>
 
@@ -218,7 +218,7 @@ const Navbar = () => {
 
 
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/admin/dashboard">Admin </Link></Typography>
+                                <Typography backgound-color="!#0000" textAlign="center"><Link style={{ textDecoration: "none" }} to="/admin/dashboard">Admin </Link></Typography>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/user/dashboard">User </Link></Typography>
