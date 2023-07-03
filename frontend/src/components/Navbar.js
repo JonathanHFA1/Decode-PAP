@@ -218,7 +218,7 @@ const Navbar = () => {
 
 
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography backgound-color="!#0000" textAlign="center"><Link style={{ textDecoration: "none" }} to="/admin/dashboard">Admin </Link></Typography>
+                                <Typography backgound-color="!#ffff" textAlign="center"><Link style={{ textDecoration: "none" }} to="/admin/dashboard">Admin </Link></Typography>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/user/dashboard">User </Link></Typography>
