@@ -41,7 +41,7 @@ const Home = () => {
             <h1 className="mb-10 text-[60px]">Bem-vindo à nossa biblioteca online</h1>
             <p className=" mb-10 block text-white text-[20px]">Descruba os romances, histórias míticas, biografias e muito mais na nossa biblioteca. Requisite o seu próximo livro de uma forma fácil e em poucos passos</p>
             <div className="flex">
-              <button className="visible w-full ">
+              <button className="visible w-full mb-10  ">
                 <a href="/livros">
                   <span className=" bg-[#FF4E16]  hover:bg-orange-700 h-[43px] w-[360px] rounded-full py-2 px-4 font-bold text-white">Pedir Livro</span>
                 </a>

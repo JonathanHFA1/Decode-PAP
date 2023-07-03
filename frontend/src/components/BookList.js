@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mui/system';
 
 const BookList = ({ books }) => {
   return (
@@ -10,9 +11,11 @@ const BookList = ({ books }) => {
           <div className="bg-stone-900 rounded-xl ">{
             book.volumeInfo.imageLinks && (
               <div className="">
-                <img key={book.id} className="object-cover cursor-pointer max-w-[300px] h-[450px] mx-10" src={book.volumeInfo.imageLinks.smallThumbnail} alt="BookImage" />
+                <img key={book.id} className="object-cover cursor-pointer w-[350px] h-[450px] mx-10" src={book.volumeInfo.imageLinks.smallThumbnail} alt="BookImage" />
                 <div className="">
-                  <p className="flex items-center justify-center p-2 ">Título - {book.volumeInfo.title}</p>
+                  <Box sx={{   display:'flex', justifyContent:'center'}}>
+                  <p className="width:'80%'flex items-center justify-center p-2 text-[14px] ">Título - {book.volumeInfo.title}</p>
+                  </Box>
                   <p className="flex items-center justify-center p-2">Autor - {book.volumeInfo.authors}</p>
                 </div>
               </div>

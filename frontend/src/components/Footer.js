@@ -9,9 +9,9 @@ const Footer = () => {
         {/* Footer */}
         <div className="">
           <h1 className="ml-5">Inscreva-se na nossa newsletter</h1>
-          <p className="ml-5">Receba notícias e as novidades que o espera.</p>
-          <div className="flex flex-col items-center justify-center ml-0 sm:flex-row">
-            <input label="Digite seu email..." />
+          <p className="ml-5 text-white">Receba notícias e as novidades que o espera.</p>
+          <div className="mt-10 flex flex-col items-center justify-center ml-0 sm:flex-row">
+            <input className=' m-[10px] h-[46px] w-[360px] rounded-[100px] border-2 p-5' label="Digite seu email..." />
             {/* Modal */}
             <button className='bg-[#FF4E16]  hover:bg-orange-700 h-[43px] w-[120px] rounded-full py-2 px-4 font-bold text-white'>
               {" "}
