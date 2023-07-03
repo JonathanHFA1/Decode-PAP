@@ -106,7 +106,7 @@ const Navbar = () => {
 
             <Typography onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
               <Link to="/register" style={{ color: 'white', textDecoration: 'none' }}>
-                Sing In
+                Registro
               </Link>
             </Typography>
 
@@ -120,7 +120,7 @@ const Navbar = () => {
 
             <Typography onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
               <Link to="/AboutUs" style={{ color: 'white', textDecoration: 'none' }}>
-                About Us
+                Sobre Nós
               </Link>
             </Typography>
             <Typography onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
@@ -177,7 +177,7 @@ const Navbar = () => {
               </MenuItem>
               {userInfo ? (
                 <MenuItem onClick={logOutUser}>
-                  <Typography textAlign="center" color="#8e67b2">
+                  <Typography textAlign="center" color="#fff">
                     Log Out{' '}
                   </Typography>
                 </MenuItem>

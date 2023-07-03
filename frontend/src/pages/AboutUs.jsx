@@ -6,9 +6,9 @@ const AboutUs = () => {
   return (
     <>
      <Navbar />
-      <div className="flex h-[50%] items-center justify-center lg:h-screen mt-5 sm:mt-0 ">
-        <div className="mt-16 sm:mt-0 flex h-[80%] w-full flex-col items-center justify-center lg:flex-row gap-6 sm:gap-0">
-          <div className="mt-10  w-full lg:p-20 md:w-[50%] p-3 sm:p-0">
+      <div className="flex h-[50%] items-center justify-center text-white lg:h-screen mt-5 sm:mt-0 ">
+        <div className="mt-16 sm:mt-0 flex  flex-col items-center justify-center lg:flex-row gap-6 sm:gap-0">
+          <div className="mt-2  w-full lg:p-20 md:w-[50%] p-3 sm:p-0">
             <h1 className="mb-8 text-3xl font-bold ">Seu texto aqui</h1>
             <p className="">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -1,22 +1,42 @@
 import React from 'react';
 import { Box } from '@mui/system';
 
-const BookList = ({ books }) => {
+const BookList = ({ books, openModal }) => {
   return (
-    <div className="flex flex-row flex-wrap items-center justify-center gap-2 p-20">
-      
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-6 md:p-12">
       {books.map((book) => (
-        
-        <div>
-          <div className="bg-stone-900 rounded-xl ">{
-            book.volumeInfo.imageLinks && (
+        <div
+          key={book.id}
+          className="flex flex-col justify-center bg-stone-700 hover:bg-stone-900 duration-500  rounded-xl"
+          onClick={() => openModal(book)}
+        >
+          <div className=" rounded-xl">
+            {book.volumeInfo.imageLinks && (
               <div className="">
-                <img key={book.id} className="object-cover cursor-pointer w-[350px] h-[450px] mx-10" src={book.volumeInfo.imageLinks.smallThumbnail} alt="BookImage" />
+                <img
+                  className="object-cover cursor-pointer w-full h-[450px]"
+                  src={book.volumeInfo.imageLinks.smallThumbnail}
+                  alt="BookImage"
+                />
                 <div className="">
-                  <Box sx={{   display:'flex', justifyContent:'center'}}>
-                  <p className="width:'80%'flex items-center justify-center p-2 text-[14px] ">Título - {book.volumeInfo.title}</p>
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <p className="width:'80%'flex items-center justify-center p-2 text-[14px]">
+                      Título -{' '}
+                      {book.volumeInfo.title.length > 20
+                        ? `${book.volumeInfo.title.slice(0, 20)}...`
+                        : book.volumeInfo.title}
+                    </p>
                   </Box>
-                  <p className="flex items-center justify-center p-2">Autor - {book.volumeInfo.authors}</p>
+                  <p className="flex items-center justify-center p-2">
+                    Autor -{' '}
+                    {book.volumeInfo.authors && book.volumeInfo.authors.length > 0 ? (
+                      book.volumeInfo.authors[0].length > 20
+                        ? `${book.volumeInfo.authors[0].slice(0, 20)}...`
+                        : book.volumeInfo.authors[0]
+                    ) : (
+                      'Author not available'
+                    )}
+                  </p>
                 </div>
               </div>
             )}

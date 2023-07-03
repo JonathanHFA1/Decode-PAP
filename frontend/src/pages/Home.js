@@ -38,8 +38,8 @@ const Home = () => {
         <div className="flex gap-10 max-w-7xl">
           {/* Container Left */}
           <div className="flex-col items-start justify-center m-3 lg:flex">
-            <h1 className="mb-10 text-[60px]">Bem-vindo à nossa biblioteca online</h1>
-            <p className=" mb-10 block text-white text-[20px]">Descruba os romances, histórias míticas, biografias e muito mais na nossa biblioteca. Requisite o seu próximo livro de uma forma fácil e em poucos passos</p>
+            <h1 className="mb-10 mx-4 md:mx-0 text-[40px] md:text-[60px]">Bem-vindo à nossa biblioteca online</h1>
+            <p className=" mb-10 mx-4 md:mx-0 block text-white text-[20px]">Descruba os romances, histórias míticas, biografias e muito mais na nossa biblioteca. Requisite o seu próximo livro de uma forma fácil e em poucos passos</p>
             <div className="flex">
               <button className="visible w-full mb-10  ">
                 <a href="/livros">
@@ -61,8 +61,8 @@ const Home = () => {
         <div className="flex flex-col max-w-7xl">
           {/* Home Title*/}
           <div className="flex flex-col m-6 ">
-            <h1 className="mb-10 text-[60px] text-black">Sempre com novidades</h1>
-            <p className=" mb-10 block text-[20px] text-black">Veja os novos livros que apareceram!</p>
+            <h1 className="mb-5 mb:mb-10 text-black text-[40px] md:text-[60px]">Sempre com novidades</h1>
+            <p className=" mb-5 mb:mb-10 block text-[20px] text-black">Veja os novos livros que apareceram!</p>
           </div>
           {/* Book Container */}
           <div className="">
