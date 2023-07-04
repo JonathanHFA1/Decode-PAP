@@ -7,17 +7,13 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import HouseIcon from '@mui/icons-material/House';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { userLogoutAction } from '../redux/actions/userAction';
 import { useDispatch, useSelector } from 'react-redux';
 import Logo from '../assets/Logo.png';
-
-import { createTheme } from '@mui/material/styles';
 
 const pages = ['Home', 'Log In'];
 
@@ -58,8 +54,7 @@ const Navbar = () => {
       <Container>
         {/* principal Menu */}
         <Toolbar disableGutters>
-          <div
-            className="hidden cursor-pointer items-center font-[Poppins] text-2xl font-bold  text-gray-800 mr-10 md:flex">
+          <div className="hidden cursor-pointer items-center font-[Poppins] text-2xl font-bold  text-gray-800 mr-10 md:flex">
             <a href={'/'}>
               <img src={Logo} alt={'Decode Logo'} className="h-[33px] w-[65px]" />
             </a>
@@ -67,7 +62,7 @@ const Navbar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
-              <MenuIcon />
+              <MenuIcon sx={{ color: 'white' }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -88,13 +83,12 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem sx={{ color: 'white' }} key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <HouseIcon sx={{ display: { xs: 'flex', md: 'none', justifyContent: 'center' }, mr: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {/* menu desktop */}
 
@@ -109,8 +103,6 @@ const Navbar = () => {
                 Registro
               </Link>
             </Typography>
-
-            
 
             <Typography onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
               <Link to="/livrosloja" style={{ color: 'white', textDecoration: 'none' }}>
@@ -130,10 +122,9 @@ const Navbar = () => {
             </Typography>
           </Box>
 
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton className="text-white" onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="" />
               </IconButton>
             </Tooltip>
@@ -144,6 +135,7 @@ const Navbar = () => {
                     bgcolor: '#252525',
                     color: 'black',
                   },
+                  color: 'white',
                 },
               }}
               sx={{ mt: '45px' }}
@@ -161,7 +153,7 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
+              <MenuItem sx={{ color: 'white' }} onClick={handleCloseUserMenu}>
                 <Typography textAlign="center" color="white">
                   <Link style={{ textDecoration: 'none' }} to="/admin/dashboard">
                     Admin{' '}
@@ -169,7 +161,7 @@ const Navbar = () => {
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" color="white" className='text-black md:text-white'>
+                <Typography textAlign="center" color="white" className="text-black md:text-white">
                   <Link style={{ textDecoration: 'none' }} to="/user/dashboard">
                     User{' '}
                   </Link>
