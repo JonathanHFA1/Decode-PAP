@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { userSignUpAction } from '../redux/actions/userAction';
 import Navbar from '../components/Navbar';
 import frontImage from '../assets/frontImg.png';
-import '../index.css';
 
 const validationSchema = yup.object({
   name: yup.string('Enter your complete name').required('Name is required'),
