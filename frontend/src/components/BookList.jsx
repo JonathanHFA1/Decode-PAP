@@ -3,11 +3,11 @@ import { Box } from '@mui/system';
 
 const BookList = ({ books, openModal }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-6 md:p-12">
+    <div className="grid grid-cols-1 gap-2 p-6 md:grid-cols-2 lg:grid-cols-4 md:p-12">
       {books.map((book) => (
         <div
           key={book.id}
-          className="flex flex-col justify-center bg-stone-700 hover:bg-stone-900 duration-500  rounded-xl"
+          className="flex flex-col justify-center duration-500 bg-stone-700 hover:bg-stone-900 rounded-xl"
           onClick={() => openModal(book)}
         >
           <div className=" rounded-xl">
