@@ -2,9 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #252525;
 }
-
+.MuiInputLabel-root {
+  color: black !important;
+}
+input[type=text]:focus {
+  border: 3px solid #252525;
+}
 .form_style {
   position: relative;
   outline: 0px;

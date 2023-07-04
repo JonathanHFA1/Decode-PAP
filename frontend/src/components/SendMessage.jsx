@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import { db, auth } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { Button, TextField } from '@mui/material';
+import { styled } from '@mui/system';
+
+const CustomTextField = styled(TextField)({
+  '& label': {
+    color: 'red', // Defina a cor desejada para a label aqui
+  },
+});
 
 const style = {
   container: `flex flex-row items-center justify-between px-4 py-2`,
@@ -38,15 +45,15 @@ const SendMessage = () => {
     <form className={style.container} onSubmit={sendMessage}>
       <TextField
         className={style.input}
-        variant='outlined'
-        ooutline
         size='small'
         value={message}
+        color='info'
         onChange={(e) => setMessage(e.target.value)}
         label='Digite uma mensagem...'
-        InputProps={{ style: { background: '#fff', color: 'black', outline:'none' } }} // Personalizar o fundo e a cor do texto do input
+        sx={{ color:'white' }}
+        InputProps={{ style: { background: '#fff', color: 'black' } }} // Personalizar o fundo e a cor do texto do input
       />
-      <Button variant='contained' color='primary' type='submit' className={style.button}>
+      <Button sx={{ bgcolor: '#FF4E16' }} variant='contained' color='primary' type='submit' className={style.button}>
         Enviar
       </Button>
     </form>

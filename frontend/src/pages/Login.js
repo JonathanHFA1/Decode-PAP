@@ -10,6 +10,7 @@ import { userSignInAction } from '../redux/actions/userAction';
 import Navbar from '../components/Navbar';
 import frontImage from '../assets/frontImg.png';
 import Button from '@mui/material/Button';
+import "../App.css"
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
