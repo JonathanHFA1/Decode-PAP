@@ -1,45 +1,54 @@
 import React, { useState } from 'react';
-import {auth, db} from '../firebase'
-import {addDoc, collection, serverTimestamp} from 'firebase/firestore'
+import { db, auth } from '../firebase';
+import { collection, addDoc } from 'firebase/firestore';
+import { Button, TextField } from '@mui/material';
 
 const style = {
-  form: ` h-14 w-full  max-w-[728px]   flex text-xl absolute bottom-0`,
-  input: `w-full text-xl p-3 bg-gray-900 text-white outline-none border-none`,
-  button: `w-[20%] text-white bg-orange-600 rounded-md`,
+  container: `flex flex-row items-center justify-between px-4 py-2`,
+  input: `flex-grow rounded-l-lg border border-gray-300 px-2 py-1 focus:outline-none hover:border-white`,
+  button: `ml-2 px-4 py-1 text-white rounded-r-lg focus:outline-none hover:bg-orange-600 transition-colors`,
 };
 
-const SendMessage = ({scroll}) => {
-  const [input, setInput] = useState('');
+const SendMessage = () => {
+  const [message, setMessage] = useState('');
 
   const sendMessage = async (e) => {
-    e.preventDefault()
-    if (input === '') {
-        alert('Please enter a valid message')
-        return
+    e.preventDefault();
+
+    if (message.trim() === '') {
+      return;
     }
-    const {uid, displayName} = auth.currentUser
-    await addDoc(collection(db, 'messages'), {
-        text: input,
-        name: displayName,
-        uid,
-        timestamp: serverTimestamp()
-    })
-    setInput('')
-    scroll.current.scrollIntoView({behavior: 'smooth'})
-  }
+
+    try {
+      // Adicionar a mensagem à coleção do Firestore
+      await addDoc(collection(db, 'messages'), {
+        text: message,
+        timestamp: new Date(),
+        name: auth.currentUser.displayName,
+        uid: auth.currentUser.uid,
+      });
+
+      setMessage(''); // Limpar o campo de input após enviar a mensagem
+    } catch (error) {
+      console.error('Erro ao enviar a mensagem: ', error);
+    }
+  };
 
   return (
-    <form onSubmit={sendMessage} className={style.form}>
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+    <form className={style.container} onSubmit={sendMessage}>
+      <TextField
         className={style.input}
-        type='text'
-        placeholder='Message'
+        variant='outlined'
+        ooutline
+        size='small'
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        label='Digite uma mensagem...'
+        InputProps={{ style: { background: '#fff', color: 'black', outline:'none' } }} // Personalizar o fundo e a cor do texto do input
       />
-      <button className={style.button} type='submit'>
-        Send
-      </button>
+      <Button variant='contained' color='primary' type='submit' className={style.button}>
+        Enviar
+      </Button>
     </form>
   );
 };

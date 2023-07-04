@@ -5,7 +5,7 @@ import { db } from '../firebase';
 import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
 
 const style = {
-  main: `flex flex-col p-[10px]`,
+  main: `flex flex-col p-4 md:p-8`,
 };
 
 const Chat = () => {
@@ -25,17 +25,17 @@ const Chat = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col h-full">
       <main className={style.main}>
         {messages &&
           messages.map((message) => (
             <Message key={message.id} message={message} />
           ))}
       </main>
-      {/* Send Message Compoenent */}
+      {/* Send Message Component */}
       <SendMessage scroll={scroll} />
-      <span ref={scroll}></span>
-    </>
+      <div ref={scroll}></div>
+    </div>
   );
 };
 
