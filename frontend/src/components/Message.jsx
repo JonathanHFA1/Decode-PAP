@@ -1,7 +1,6 @@
 import React from 'react';
-import {auth} from '../firebase'
-import {Box} from '@mui/material';
-
+import { auth } from '../firebase';
+import { Box } from '@mui/material';
 
 const style = {
   message: `flex items-center m-4 py- px-2 rounded-tl-full rounded-tr-full`,
@@ -11,21 +10,24 @@ const style = {
 };
 
 const Message = ({ message }) => {
-  const messageClass = 
-  message.uid === auth.currentUser.uid
-  ? `${style.sent}`
-  : `${style.received}`
+  // Verifica se a mensagem foi enviada pelo usuário atual ou recebida de outro usuário
+  const messageClass =
+    message.uid === auth.currentUser.uid
+      ? `${style.sent}`
+      : `${style.received}`;
 
   return (
-    <div className='color-white '>
+    <div className='color-white'>
       <div className={`${style.message} ${messageClass}`}>
         <div className='w-full'>
-        <div className='flex items-center '>
-          <p className={style.name}>{message.name} </p>
-        </div>
-        <div className='flex items-center m-2 px-2 rounded-tl-full rounded-tr-full '>
-        <p className=' text-xs md:text-base'>{message.text}</p>
-        </div>
+          <div className='flex items-center'>
+            {/* Exibe o nome do remetente da mensagem */}
+            <p className={style.name}>{message.name} </p>
+          </div>
+          <div className='flex items-center m-2 px-2 rounded-tl-full rounded-tr-full'>
+            {/* Exibe o conteúdo da mensagem */}
+            <p className='text-xs md:text-base'>{message.text}</p>
+          </div>
         </div>
       </div>
     </div>
