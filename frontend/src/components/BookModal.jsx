@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Modal, Typography, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import ModalCompra from './ModalCompra';
 import TextField from '@mui/material/TextField';
 
@@ -11,6 +11,13 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  
+  const [randomNumber, setRandomNumber] = useState(0);
+
+  useEffect(() => {
+    const newRandomNumber = Math.floor(Math.random() * 40);
+    setRandomNumber(newRandomNumber);
+  }, []);
 
   const truncatedDescription = book.volumeInfo.description ? `${book.volumeInfo.description.slice(0, 1000)}...` : 'No description available.';
   const handleExpiryDateChange = (event) => {
@@ -24,6 +31,8 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
       setExpiryDate(value);
     }
   };
+
+
   return (
     <>
       <Modal open={isOpen} onClose={onRequestClose}>
@@ -63,6 +72,8 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div>
+                  <h3>Dados Pessoais</h3>
+<hr />
                     <TextField
                       id="email"
                       label="Email"
@@ -76,13 +87,24 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                       }}
                       onChange={(e) => setEmail(e.target.value)}
                     />
+                    <TextField
+                      id="name"
+                      label="Nome"
+                      variant="standard"
+                      className="w-full"
+                      InputLabelProps={{
+                        style: { color: 'white' },
+                      }}
+                      InputProps={{
+                        style: { color: 'white' },
+                      }}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
 
-                  <div>
-             
-                  </div>
-
-                  <form className="flex flex-wrap w-full gap-3 p-5" onSubmit="">
+                <div>
+                  <h3>Dados do Cartão</h3>
+                <form className="flex flex-wrap w-full gap-3 p-5">
                     <TextField
                       label="Número do cartão"
                       variant="outlined"
@@ -91,7 +113,6 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                         maxLength: 16,
                         inputMode: 'numeric',
                         style: { color: 'white' },
-                        
                       }}
                       InputLabelProps={{
                         style: { color: 'white' },
@@ -99,8 +120,7 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                       placeholder="0000 0000 0000"
                       required
                     />
-
-<TextField
+                    <TextField
                       label="Data de validade"
                       variant="outlined"
                       fullWidth
@@ -110,7 +130,6 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                         maxLength: 5,
                         inputMode: 'numeric',
                         style: { color: 'white' },
-                        
                       }}
                       InputLabelProps={{
                         style: { color: 'white' },
@@ -118,7 +137,6 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                       placeholder="MM/YY"
                       required
                     />
-
                     <TextField
                       label="CVC/CVV"
                       variant="outlined"
@@ -127,7 +145,6 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                         maxLength: 3,
                         inputMode: 'numeric',
                         style: { color: 'white' },
-                        
                       }}
                       InputLabelProps={{
                         style: { color: 'white' },
@@ -135,10 +152,15 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                       placeholder="•••"
                       required
                     />
-
-                    <button type="submit">Enviar</button>
                   </form>
                 </div>
+                </div>
+              </div>
+              <p className='text-2xl text-white'>Valor do Livro: {randomNumber} €</p>
+
+              <div className="my-5">
+                <button className="bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white">Comprar</button>{' '}
+                
               </div>
             </ModalCompra>
           </div>

@@ -16,14 +16,11 @@ export default function Modal({ isOpen, setModalOpen, children }) {
         <div style={MODAL_STYLE} className="fixed top-[50%] left-[50%] p-[50px] bg-[#252525] rounded-xl text-black ">
           <div className="flex flex-col items-center justify-end">
             <div>{children}</div>
-           <div className='flex gap-5'>
-           <button onClick={setModalOpen} className="bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white">
-              Fechar
-            </button>
-            <button onClick={setModalOpen} className="bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white">
-              Comprar
-            </button>
-           </div>
+            <div className="flex items-start w-full">
+              <button onClick={setModalOpen} className="bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-6 font-bold text-white">
+                Fechar
+              </button>
+            </div>
           </div>
         </div>
       </div>

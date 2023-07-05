@@ -10,9 +10,9 @@ import Navbar from '../components/Navbar';
 import frontImage from '../assets/frontImg.png';
 
 const validationSchema = yup.object({
-  name: yup.string('Enter your complete name').required('Name is required'),
-  email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
-  password: yup.string('Enter your password').min(8, 'Password should be of minimum 8 characters length').required('Password is required'),
+  name: yup.string('Escreva seu nome').required('Seu nome é necessário'),
+  email: yup.string('Escreva seu Email').email('Escreva um email válido').required('Email é necessário'),
+  password: yup.string('Escreva sua password').min(8, 'A senha deve ter o mínimo de 8 caracteres').required('Senha é necessária'),
 });
 
 const Register = () => {
