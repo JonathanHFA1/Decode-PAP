@@ -6,7 +6,7 @@ import { styled } from '@mui/system';
 
 const CustomTextField = styled(TextField)({
   '& label': {
-    color: 'red', // Defina a cor desejada para a label aqui
+    color: 'red', 
   },
 });
 
