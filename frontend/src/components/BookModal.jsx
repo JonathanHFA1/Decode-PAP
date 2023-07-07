@@ -48,9 +48,9 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
           >
             <CloseIcon />
           </IconButton>
-          <div className="flex flex-row gap-6">
+          <div className="flex flex-row gap-6 ">
             <img className="object-cover w-[300px] h-[400px]" src={book.volumeInfo.imageLinks?.smallThumbnail} alt="BookImage" />
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
               <Typography variant="h5" gutterBottom>
                 {book.volumeInfo.title}
               </Typography>

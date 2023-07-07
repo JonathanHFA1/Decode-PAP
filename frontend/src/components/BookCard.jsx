@@ -54,9 +54,6 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
   return (
    <>
     <Card sx={{ maxWidth: 345, bgcolor: '#252525' }}>
-      <div className="flex items-start justify-center text-white">
-        <p>Título do Livro</p>
-      </div>
       <CardHeader
         className="text-white"
         title={title}
