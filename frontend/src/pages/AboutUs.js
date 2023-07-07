@@ -10,7 +10,7 @@
           <div className="flex flex-col items-center justify-center gap-6 mt-16 sm:mt-0 lg:flex-row sm:gap-0">
             <div className="mt-2  w-full lg:p-20 md:w-[50%] p-3 sm:p-0">
               <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold ">Sobre Nó<s></s></h1>
+                <h1 className="text-3xl font-bold ">Sobre Nós</h1>
                 <img src={logo} alt="" className="w-[100px]" />
               
               </div>
