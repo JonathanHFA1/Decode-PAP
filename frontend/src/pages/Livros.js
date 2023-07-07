@@ -30,31 +30,34 @@ const Livros = () => {
   }, []);
   return (
     <>
-    <Navbar/>
-    <Box sx={{ minHeight: '100vh' }}>
-      <Container sx={{ pt: 5, pb: 5, minHeight: '83vh' }}>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 0, md: 12 }}>
-            {posts &&
-              posts.map((post, index) => (
-                <Grid item xs={2} sm={4} md={4} key={index}>
-                  <BookCard
-                    id={post._id}
-                    title={post.title}
-                    content={post.content}
-                    image={post.image ? post.image.url : ''}
-                    subheader={moment(post.createdAt).format('MMMM DD, YYYY')}
-                    comments={post.comments.length}
-                    likes={post.likes.length}
-                    likesId={post.likes}
-                    showPosts={showPosts}
-                  />
-                </Grid>
-              ))}
-          </Grid>
-        </Box>
-      </Container>
-    </Box>
+      <Navbar />
+      <Box sx={{ minHeight: '100vh' }}>
+        <Container sx={{ pt: 5, pb: 5, minHeight: '83vh' }}>
+          <div className="flex justify-end mb-8">
+            <button className="bg-[#FF4E16]  hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white"><a href="/livros">Ver Outros Livros</a></button>
+          </div>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 0, md: 12 }}>
+              {posts &&
+                posts.map((post, index) => (
+                  <Grid item xs={2} sm={4} md={4} key={index}>
+                    <BookCard
+                      id={post._id}
+                      title={post.title}
+                      content={post.content}
+                      image={post.image ? post.image.url : ''}
+                      subheader={moment(post.createdAt).format('MMMM DD, YYYY')}
+                      comments={post.comments.length}
+                      likes={post.likes.length}
+                      likesId={post.likes}
+                      showPosts={showPosts}
+                    />
+                  </Grid>
+                ))}
+            </Grid>
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 };
