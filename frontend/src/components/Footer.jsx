@@ -1,62 +1,68 @@
-import { Box, Snackbar } from '@mui/material';
-import React, { useState } from 'react';
+import { Box } from '@mui/material';
+import React, { useState, useRef } from 'react';
 import footerImage from '../assets/Footer.png';
+import emailjs from '@emailjs/browser';
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [from_email, setFromEmail] = useState('');
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const isValidEmail = /\S+@\S+\.\S+/.test(email);
-    if (isValidEmail) {
-      setSnackbarMessage('Inscrição Completa!');
-    } else {
-      setSnackbarMessage('Insira um Email Válido');
-    }
-    setSnackbarOpen(true);
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_ig8r95u', 'template_c9ivi5l', form.current, 'hWhQE814mtmVHSrl3').then(
+      (result) => {
+        console.log(result.text);
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+    setFromEmail('');
+
+    setOpenSnackbar(true);
   };
 
-  const handleSnackbarClose = () => {
-    setSnackbarOpen(false);
-  };
-
-  const renderSnackbar = (
-    <Snackbar
-      open={snackbarOpen}
-      autoHideDuration={1000}
-      onClose={handleSnackbarClose}
-      message={snackbarMessage}
-    />
-  );
 
   return (
     <>
       <div className="flex h-[700px] flex-col items-center justify-center gap-10 md:gap-[260px] lg:h-[400px] lg:flex-row bg-[#252525]">
-        <div className="">
-          <h1 className="ml-5">Inscreva-se na nossa newsletter</h1>
-          <p className="ml-5 text-white">Receba notícias e as novidades que o espera.</p>
-          <div className="mt-10 flex flex-col items-center justify-center ml-0 sm:flex-row">
-            <input
-              className='m-[10px] h-[46px] w-[360px] rounded-[100px] border-2 p-5'
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="Digite seu email..."
-            />
-            <button className='bg-[#FF4E16]  hover:bg-orange-700 h-[43px] w-[120px] rounded-full py-2 px-4 font-bold text-white'>
-              <a href={"/"} onClick={handleSubmit}>Registar</a>
-            </button>
+        <div className="flex flex-col gap-4">
+          <h1 className="">Inscreva-se na nossa newsletter</h1>
+          <p className="text-white ">Receba notícias e as novidades que o espera.</p>
+          <div>
+            <form className="flex" ref={form} onSubmit={sendEmail}>
+              <TextField
+                id="email"
+                label="Email"
+                variant="standard"
+                name="from_email"
+                className="w-full"
+                onChange={(e) => setFromEmail(e.target.value)}
+                InputLabelProps={{
+                  style: { color: 'white' },
+                }}
+                InputProps={{
+                  style: { color: 'white' },
+                }}
+              />{' '}
+              <input type="submit" value="Enviar" className="mt-2 bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white" />
+            </form>
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar} message="Email enviado com sucesso!" />
           </div>
         </div>
         <img className="" src={footerImage} alt="Front Livros" />
       </div>
-      {renderSnackbar}
     </>
   );
 };

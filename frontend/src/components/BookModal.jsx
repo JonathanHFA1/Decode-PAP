@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Box, Modal, Typography, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import ModalCompra from './ModalCompra';
 import TextField from '@mui/material/TextField';
+import emailjs from '@emailjs/browser';
+import Snackbar from '@mui/material/Snackbar';
 
 const BookModal = ({ book, isOpen, onRequestClose }) => {
   const [openModal, setOpenModal] = useState(false);
   const [expiryDate, setExpiryDate] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  //confirmar envio
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
   const [randomNumber, setRandomNumber] = useState(0);
 
   useEffect(() => {
@@ -32,6 +37,21 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
     }
   };
 
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_hdrzkeo', 'template_4c4wcyk', form.current, 'hWhQE814mtmVHSrl3').then(
+      (result) => {
+        console.log(result.text);
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+    setOpenSnackbar(true);
+  };
 
   return (
     <>
@@ -71,13 +91,14 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                 <h1 className="mb-4 text-2xl font-medium leading-6 text-white ">Preencha os seus dados</h1>
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <div>
-                  <h3>Dados Pessoais</h3>
-<hr />
+                  <form ref={form} onSubmit={sendEmail}>
+                    <h3>Dados Pessoais</h3>
+                    <hr />
                     <TextField
                       id="email"
                       label="Email"
                       variant="standard"
+                      name="from_email"
                       className="w-full"
                       InputLabelProps={{
                         style: { color: 'white' },
@@ -85,12 +106,12 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                       InputProps={{
                         style: { color: 'white' },
                       }}
-                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <TextField
                       id="name"
                       label="Nome"
                       variant="standard"
+                      name="from_name"
                       className="w-full"
                       InputLabelProps={{
                         style: { color: 'white' },
@@ -98,70 +119,88 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                       InputProps={{
                         style: { color: 'white' },
                       }}
-                      onChange={(e) => setEmail(e.target.value)}
                     />
-                  </div>
+                    <TextField
+                      id="endereco"
+                      label="Endereço"
+                      variant="standard"
+                      name="endereco"
+                      className="w-full"
+                      InputLabelProps={{
+                        style: { color: 'white' },
+                      }}
+                      InputProps={{
+                        style: { color: 'white' },
+                      }}
+                    />
 
-                <div>
-                  <h3>Dados do Cartão</h3>
-                <form className="flex flex-wrap w-full gap-3 p-5">
-                    <TextField
-                      label="Número do cartão"
-                      variant="outlined"
-                      fullWidth
-                      inputProps={{
-                        maxLength: 16,
-                        inputMode: 'numeric',
-                        style: { color: 'white' },
-                      }}
-                      InputLabelProps={{
-                        style: { color: 'white' },
-                      }}
-                      placeholder="0000 0000 0000"
-                      required
-                    />
-                    <TextField
-                      label="Data de validade"
-                      variant="outlined"
-                      fullWidth
-                      value={expiryDate}
-                      onChange={handleExpiryDateChange}
-                      inputProps={{
-                        maxLength: 5,
-                        inputMode: 'numeric',
-                        style: { color: 'white' },
-                      }}
-                      InputLabelProps={{
-                        style: { color: 'white' },
-                      }}
-                      placeholder="MM/YY"
-                      required
-                    />
-                    <TextField
-                      label="CVC/CVV"
-                      variant="outlined"
-                      fullWidth
-                      inputProps={{
-                        maxLength: 3,
-                        inputMode: 'numeric',
-                        style: { color: 'white' },
-                      }}
-                      InputLabelProps={{
-                        style: { color: 'white' },
-                      }}
-                      placeholder="•••"
-                      required
-                    />
+                    <input type="hidden" name="title" value={book.volumeInfo.title} />
+                    <input type="hidden" name="price" value={randomNumber} />
+                    <p className="text-2xl text-white" name="valor">
+                      Valor do Livro: {randomNumber} €
+                    </p>
+
+                    <div className="my-5">
+                      <input type="submit" value="Enviar" className="bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white" />
+                    </div>
                   </form>
-                </div>
-                </div>
-              </div>
-              <p className='text-2xl text-white'>Valor do Livro: {randomNumber} €</p>
+                  <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar} message="Compra Realizada com sucesso!" />
 
-              <div className="my-5">
-                <button className="bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white">Comprar</button>{' '}
-                
+                  <div>
+                    <h3>Dados do Cartão</h3>
+                    <form className="flex flex-wrap w-full gap-3 p-5">
+                      <TextField
+                        label="Número do cartão"
+                        variant="outlined"
+                        fullWidth
+                        inputProps={{
+                          maxLength: 16,
+                          inputMode: 'numeric',
+                          style: { color: 'white' },
+                        }}
+                        InputLabelProps={{
+                          style: { color: 'white' },
+                        }}
+                        placeholder="0000 0000 0000"
+                        required
+                      />
+                      <TextField
+                        label="Data de validade"
+                        variant="outlined"
+                        fullWidth
+                        value={expiryDate}
+                        onChange={handleExpiryDateChange}
+                        inputProps={{
+                          maxLength: 5,
+                          inputMode: 'numeric',
+                          style: { color: 'white' },
+                        }}
+                        InputLabelProps={{
+                          style: { color: 'white' },
+                        }}
+                        placeholder="MM/YY"
+                        required
+                      />
+                      <TextField
+                        label="CVC/CVV"
+                        variant="outlined"
+                        fullWidth
+                        inputProps={{
+                          maxLength: 3,
+                          inputMode: 'numeric',
+                          style: { color: 'white' },
+                        }}
+                        InputLabelProps={{
+                          style: { color: 'white' },
+                        }}
+                        placeholder="•••"
+                        required
+                      />
+                    </form>
+                  </div>
+                </div>
               </div>
+              <p className="text-2xl text-white">Valor do Livro: {randomNumber} €</p>
             </ModalCompra>
           </div>
         </div>
