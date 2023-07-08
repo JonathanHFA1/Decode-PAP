@@ -91,9 +91,11 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                 <h1 className="mb-4 text-2xl font-medium leading-6 text-white ">Preencha os seus dados</h1>
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <form ref={form} onSubmit={sendEmail}>
-                    <h3>Dados Pessoais</h3>
-                    <hr />
+                  <form ref={form} onSubmit={sendEmail} className='flex flex-col gap-5'>
+                    <div className="mb-5">
+                      <h3 className="mt-10 text-2xl font-semibold text-white">Dados Pessoais</h3>
+                      <hr className="border-t-2 border-orange-600" />
+                    </div>
                     <TextField
                       id="email"
                       label="Email"
@@ -136,7 +138,7 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
 
                     <input type="hidden" name="title" value={book.volumeInfo.title} />
                     <input type="hidden" name="price" value={randomNumber} />
-                    <p className="text-2xl text-white" name="valor">
+                    <p className="text-xl text-white" name="valor">
                       Valor do Livro: {randomNumber} €
                     </p>
 
@@ -147,7 +149,10 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                   <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar} message="Compra Realizada com sucesso!" />
 
                   <div>
-                    <h3>Dados do Cartão</h3>
+                    <div className="mb-5">
+                      <h3 className="mt-10 text-2xl font-semibold text-white">Dados Pessoais</h3>
+                      <hr className="border-t-2 border-orange-600" />
+                    </div>{' '}
                     <form className="flex flex-wrap w-full gap-3 p-5">
                       <TextField
                         label="Número do cartão"
@@ -200,7 +205,6 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                   </div>
                 </div>
               </div>
-              <p className="text-2xl text-white">Valor do Livro: {randomNumber} €</p>
             </ModalCompra>
           </div>
         </div>

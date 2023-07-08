@@ -20,7 +20,6 @@ import TextField from '@mui/material/TextField';
 import emailjs from '@emailjs/browser';
 import Snackbar from '@mui/material/Snackbar';
 
-
 //modal
 const PostCard = ({ id, title, subheader, image, content, comments, likes, showPosts, likesId }) => {
   const [randomNumber, setRandomNumber] = useState(0);
@@ -28,7 +27,6 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
   const { userInfo } = useSelector((state) => state.signIn);
   const [loading, setLoading] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-
 
   //confirmar envio
   const handleCloseSnackbar = () => {
@@ -56,7 +54,6 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
       }
     );
     setOpenSnackbar(true);
-
   };
 
   //add like
@@ -126,11 +123,14 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
               </button>
             </div>
             <ModalCompra isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
-              <div className="flex ">
+              <div className="flex gap-5 ">
                 <div>
-                  <form ref={form} onSubmit={sendEmail}>
-                    <h3>Dados Pessoais</h3>
-                    <hr />
+                  <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-5">
+                    <div className="mb-5">
+                      <h3 className="mt-10 text-2xl font-semibold text-white">Dados Pessoais</h3>
+                      <hr className="border-t-2 border-orange-600" />
+                    </div>
+
                     <TextField
                       id="email"
                       label="Email"
@@ -173,7 +173,7 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
 
                     <input type="hidden" name="title" value={title} />
                     <input type="hidden" name="price" value={randomNumber} />
-                    <p className="text-2xl text-white" name="valor">
+                    <p className="text-xl text-white" name="valor">
                       Valor do Livro: {randomNumber} €
                     </p>
 
@@ -182,11 +182,14 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
                     </div>
                   </form>
                   <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar} message="Compra Realizada com sucesso!" />
-
                 </div>
                 <div>
-                  <h3>Dados do Cartão</h3>
                   <form className="flex flex-wrap w-full gap-3 p-5">
+                    {' '}
+                    <div className="mb-5">
+                      <h3 className="mt-10 text-2xl font-semibold text-white">Dados do Cartão</h3>
+                      <hr className="border-t-2 border-orange-600" />
+                    </div>
                     <TextField
                       label="Número do cartão"
                       variant="outlined"
