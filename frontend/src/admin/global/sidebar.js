@@ -63,7 +63,7 @@ const SidebarAdm = () => {
                   </MenuItem>
                   <MenuItem component={<Link to="/admin/book/create" />} icon={<PostAddIcon />}>
                     {' '}
-                    Create post{' '}
+                    Criar Livro{' '}
                   </MenuItem>
                     <MenuItem component={<Link to="/" />} icon={<DashboardIcon />}>
                     {' '}

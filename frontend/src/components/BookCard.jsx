@@ -124,7 +124,7 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
             </div>
             <ModalCompra isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
               <div className="flex gap-5 ">
-                <div>
+                <div className='w-1/2'>
                   <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-5">
                     <div className="mb-5">
                       <h3 className="mt-10 text-2xl font-semibold text-white">Dados Pessoais</h3>
@@ -173,9 +173,11 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
 
                     <input type="hidden" name="title" value={title} />
                     <input type="hidden" name="price" value={randomNumber} />
-                    <p className="text-xl text-white" name="valor">
+                  <div className='w-full'>
+                  <p className="text-xl text-white" name="valor">
                       Valor do Livro: {randomNumber} €
                     </p>
+                  </div>
 
                     <div className="my-5">
                       <input type="submit" value="Enviar" className="bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white" />
@@ -187,7 +189,7 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
                   <form className="flex flex-wrap w-full gap-3 p-5">
                     {' '}
                     <div className="mb-5">
-                      <h3 className="mt-10 text-2xl font-semibold text-white">Dados do Cartão</h3>
+                      <h3 className="mt-5 text-2xl font-semibold text-white">Dados do Cartão</h3>
                       <hr className="border-t-2 border-orange-600" />
                     </div>
                     <TextField

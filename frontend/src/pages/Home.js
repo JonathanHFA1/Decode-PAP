@@ -33,7 +33,7 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div className="flex items-center justify-center w-full mt-14 ">
+      <div className="flex items-center justify-center w-full h-[900px]">
         {/* Home First */}
         <div className="flex gap-10 max-w-7xl">
           {/* Container Left */}
@@ -41,7 +41,7 @@ const Home = () => {
             <h1 className="mb-10 mx-4 md:mx-0 text-[40px] md:text-[60px]">Bem-vindo à nossa biblioteca online</h1>
             <p className=" mb-10 mx-4 md:mx-0 block text-white text-[20px]">Descruba os romances, histórias míticas, biografias e muito mais na nossa biblioteca. Requisite o seu próximo livro de uma forma fácil e em poucos passos</p>
             <div className="flex">
-              <button className="visible w-full mb-10  ">
+              <button className="visible w-full mb-10 ">
                 <a href="/livros">
                   <span className=" bg-[#FF4E16]  hover:bg-orange-700 h-[43px] w-[360px] rounded-full py-2 px-4 font-bold text-white">Pedir Livro</span>
                 </a>
@@ -49,7 +49,7 @@ const Home = () => {
             </div>
           </div>
           {/* Container Right */}
-          <div className="items-center justify-center hidden m-3 ml-10 lg:flex">
+          <div className="items-center justify-center hidden ml-10 lg:flex">
             <img className="w-[1400px] h-full" src={frontImage} alt="Front Livros" />
           </div>
         </div>
