@@ -11,9 +11,15 @@ import { modules } from '../components/moduleToolbar';
 import { useEffect, useState } from 'react';
 import {  useNavigate, useParams } from 'react-router-dom';
 
+//código define um esquema de validação usando Yup para validar o título e o conteúdo 
 const validationSchema = yup.object({
-  title: yup.string('Add a post title').min(4, 'text content should havea minimum of 4 characters ').required('Post title is required'),
-  content: yup.string('Add text content').min(10, 'text content should havea minimum of 10 characters ').required('text content is required'),
+  title: yup.string('Adicione o titulo')
+    .min(4, 'o conteúdo do texto deve ter no mínimo 4 caracteres')
+    .required('Titulo do livro é obrigatório'),
+  
+  content: yup.string('Adicionar conteúdo de texto')
+    .min(10, 'O conteúdo do texto deve ter no mínimo 10 caracteres')
+    .required('O conteúdo do texto é obrigatório'),
 });
 
 const EditPost = () => {

@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     //delete post by Id
     const deletePostById = async (e, id) => {
         // console.log(id)
-        if (window.confirm("Are you sure you want to delete this post?")) {
+        if (window.confirm("Quer mesmo deletar este Livro?")) {
             try {
                 const { data } = await axios.delete(`/api/delete/post/${id}`);
                 if (data.success === true) {
@@ -129,7 +129,7 @@ const AdminDashboard = () => {
                 Posts
             </Typography>
             <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
-                <Button variant='contained' color="success" startIcon={<AddIcon />}><Link style={{ color: 'white', textDecoration: 'none' }} to='/admin/post/create'>Create Post</Link> </Button>
+                <Button variant='contained' color="success" startIcon={<AddIcon />}><Link style={{ color: 'white', textDecoration: 'none' }} to='/admin/book/create'>Criar Livro</Link> </Button>
             </Box>
             <Paper sx={{ bgcolor: "white" }} >
 

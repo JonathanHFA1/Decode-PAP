@@ -26,7 +26,7 @@ export const userSignInAction = (user) => async (dispatch) => {
             type: USER_SIGNIN_SUCCESS,
             payload: data
         });
-        toast.success("Login Successfully!");
+        toast.success("Login realizado!");
     } catch (error) {
         dispatch({
             type: USER_SIGNIN_FAIL,
@@ -46,7 +46,7 @@ export const userSignUpAction = (user) => async (dispatch) => {
             type: USER_SIGNUP_SUCCESS,
             payload: data
         });
-        toast.success("Register Successfully!");
+        toast.success("Registo Realizado!");
     } catch (error) {
         dispatch({
             type: USER_SIGNUP_FAIL,
@@ -66,7 +66,7 @@ export const userLogoutAction = () => async (dispatch) => {
             type: USER_LOGOUT_SUCCESS,
             payload: data
         });
-        toast.success("Log out successfully!");
+        toast.success("Log out realizado!");
     } catch (error) {
         dispatch({
             type: USER_LOGOUT_FAIL,
