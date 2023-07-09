@@ -1,7 +1,7 @@
   import frontImage from '../images/rBook.png';
   import Navbar from '../components/Navbar';
   import logo from '../images/Logo.png';
-
+/** */
   const AboutUs = () => {
     return (
       <>
