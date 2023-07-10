@@ -43,7 +43,7 @@ const Register = () => {
 
           <img className="w-[75%]" src={frontImage} alt="Front Livros" />
           <div className="flex w-[75%] flex-col justify-center ">
-            <p className="mt-5 mb-3 text-xl text-white">&quot;Há livros escritos para evitar espaços vazios na estante&quot;</p>
+            <p className="mt-5 mb-3 text-xl text-white">&quot;O livro é uma extensão da memória e da imaginação&quot;</p>
             <h6 className="text-sm text-white">Carlos Drummond de Andrade</h6>
           </div>
         </div>
