@@ -68,20 +68,27 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
           >
             <CloseIcon />
           </IconButton>
-          <div className="flex flex-row gap-6 ">
-            <img className="object-cover w-[300px] h-[400px]" src={book.volumeInfo.imageLinks?.smallThumbnail} alt="BookImage" />
-            <div className="flex flex-col ">
-              <Typography variant="h5" gutterBottom>
-                {book.volumeInfo.title}
-              </Typography>
-              <Typography variant="subtitle1" gutterBottom>
-                Author: {book.volumeInfo.authors?.[0] || 'Author not available'}
-              </Typography>
-              <Typography variant="body1">{truncatedDescription}</Typography>
+          <div className="flex flex-col md:flex-row gap-6 lg:ml-[500px] ml-0">
+            <img className="object-cover w-full lg:w-[300px] lg:h-[400px] " src={book.volumeInfo.imageLinks?.smallThumbnail} alt="BookImage" />
+            <div className="flex flex-col justify-between">
+              <div className="flex flex-col gap-4">
+                <Typography variant="h5" gutterBottom>
+                  {book.volumeInfo.title}
+                </Typography>
+                <Typography variant="subtitle1" gutterBottom>
+                  Author: {book.volumeInfo.authors?.[0] || 'Author not available'}
+                </Typography>
+                <Typography variant="body1" className="w-full md:w-1/2">
+                  {truncatedDescription}
+                </Typography>
+              </div>
+              <div>
+                <button onClick={() => setOpenModal(true)} className="w-full lg:w-auto bg-[#FF4E16] hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white">
+                  Comprar
+                </button>
+              </div>
             </div>
-            <button onClick={() => setOpenModal(true)} className="bg-[#FF4E16]  hover:bg-orange-700 h-[43px] rounded-full py-2 px-4 font-bold text-white">
-              Comprar
-            </button>
+
             <ModalCompra
               isOpen={openModal}
               setModalOpen={() => setOpenModal(!openModal)}
@@ -91,7 +98,7 @@ const BookModal = ({ book, isOpen, onRequestClose }) => {
                 <h1 className="mb-4 text-2xl font-medium leading-6 text-white ">Preencha os seus dados</h1>
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <form ref={form} onSubmit={sendEmail} className='flex flex-col gap-5'>
+                  <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-5">
                     <div className="mb-5">
                       <h3 className="mt-10 text-2xl font-semibold text-white">Dados Pessoais</h3>
                       <hr className="border-t-2 border-orange-600" />
