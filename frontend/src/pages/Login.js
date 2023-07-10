@@ -28,7 +28,7 @@ const Login = () => {
       if (userInfo.role === 'admin') {
         navigate('/admin/dashboard');
       } else {
-        navigate('/user/dashboard');
+        navigate('/');
       }
     }
   }, [isAuthenticated]);
