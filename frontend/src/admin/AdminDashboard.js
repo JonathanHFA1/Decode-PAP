@@ -80,14 +80,6 @@ const AdminDashboard = () => {
             )
         },
         {
-            field: 'comments',
-            headerName: 'Comments',
-            width: 150,
-            renderCell: (params) => (
-                params.row.comments.length
-            )
-        },
-        {
             field: 'postedBy',
             headerName: 'Posted by',
             width: 150,

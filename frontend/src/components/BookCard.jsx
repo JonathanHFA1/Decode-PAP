@@ -84,7 +84,7 @@ const PostCard = ({ id, title, subheader, image, content, comments, likes, showP
   };
   return (
     <>
-      <Card sx={{ maxWidth: 345, bgcolor: '#252525' }}>
+      <Card sx={{ maxWidth: "345px",height:"550px", bgcolor: '#252525' }}>
         <CardHeader
           className="text-white"
           title={title}
