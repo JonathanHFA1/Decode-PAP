@@ -38,7 +38,7 @@ const Home = () => {
         <div className="flex gap-10 max-w-7xl">
           {/* Container Left */}
           <div className="flex-col items-start justify-center m-3 lg:flex">
-            <h1 className="mb-10 mx-4 md:mx-0 text-[40px] md:text-[60px]">Bem-vindo à nossa biblioteca online</h1>
+            <h1 className="mb-10 mx-4 md:mx-0 text-[40px] md:text-[60px]">Bem-vindo à nossa Decode LIbrary</h1>
             <p className=" mb-10 mx-4 md:mx-0 block text-white text-[20px]">Descruba os romances, histórias míticas, biografias e muito mais na nossa biblioteca. Requisite o seu próximo livro de uma forma fácil e em poucos passos</p>
             <div className="flex">
               <button className="visible w-full mb-10 ">
