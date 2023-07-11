@@ -100,7 +100,7 @@ const Navbar = () => {
 
             <Typography onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mr: 2 }}>
               <Link to="/register" style={{ color: 'white', textDecoration: 'none' }}>
-                Registro
+                Registo
               </Link>
             </Typography>
 
